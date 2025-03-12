@@ -1,28 +1,30 @@
 import models.*;
 import func.*;
-import java.util.Scanner;
 
-class Main{
+import static func.Input.nextLine;
+import static func.Input.println;
+
+class Main {
     public static void main(String[] args) {
-        // Vehicle 用空的构造函数做出来的车 = new Vehicle();
-        // System.out.println("用空的构造函数做出来的车: "+用空的构造函数做出来的车.getID());
-
-        // 用空的构造函数做出来的车.setID("100000");
-        // System.out.println("用空的构造函数做出来的车: "+用空的构造函数做出来的车.getID());
-
-        // Vehicle 用ID构造函数做出来的车 = new Vehicle("1001", "toyota");
-        // System.out.println("用ID构造函数做出来的车: "+用ID构造函数做出来的车.getID() + "  "+ 用ID构造函数做出来的车.getBrand());
-        Scanner scanner = new Scanner(System.in);
 
         Customer customer = new Customer();
 
+        customer.setName(Input.getValidUsername());
 
-        System.out.println("Enter your username: ");
-        customer.setName(scanner.nextLine());;
+        customer.setEmail(Input.getValidEmail()); 
 
-        Input.test();
+        customer.setPhoneNumber(Input.getValidPhoneNumber());
 
+        println("\nYour information:");
+        println("Username: " + customer.getName());
+        println("Email: " + customer.getEmail());
+        println("Phone: " + customer.getPhoneNumber());
 
-        scanner.close();
+        println("\nConfirm to register? Yes/No");
+        if(Input.getYesOrNot())
+        {
+            println("\nRegister Successfully! press ENTER go to Home Page!");
+            nextLine();
+        }
     }
 }
